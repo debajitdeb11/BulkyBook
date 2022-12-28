@@ -38,6 +38,9 @@ namespace BulkyBook.Controllers
         {
             try
             {
+                if(category.Name.Equals(category.DisplayOrder.ToString(), StringComparison.Ordinal))                {
+                    ModelState.AddModelError("name", "Name and Display Order cannot be equal");
+                }
                 if (ModelState.IsValid)
                 {
                     _db.Categories.Add(category);
